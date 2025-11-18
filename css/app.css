@@ -1,0 +1,691 @@
+/* Layout ------------------------------------------------------------------ */
+
+/* Base Layout Structure */
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Playpen Sans', cursive;
+}
+
+main {
+    flex: 1;
+    /* Takes remaining space */
+    padding-bottom: 60px;
+    /* Space above footer */
+}
+
+footer {
+    background: #ffe4ec;
+    padding: 30px 0;
+    margin-top: auto;
+    /* Pushes footer down */
+}
+
+body {
+    width: 100%;
+    overflow-x: hidden;
+    margin: 0;
+    margin-top: 100px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff4f4;
+    font-family: "Playpen Sans", serif;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/*===========================================
+                    HEADER
+=============================================*/
+
+header {
+    display: flex;
+    flex-direction: column;
+    /* Change to row for horizontal layout */
+    justify-content: space-between;
+    /* Space out logo and nav */
+    align-items: center;
+    padding: 10px 0px;
+    background: rgba(255, 255, 255, 0.2);
+    position: fixed;
+    width: 100%;
+    backdrop-filter: blur(10px);
+    top: 0;
+    left: 0;
+    /* Ensure it starts from the left edge */
+    right: 0;
+    /* Ensure it starts from the right edge */
+    z-index: 100;
+    /* Ensure header is above other content */
+}
+
+.header-top {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    max-width: 1400px;
+    /* Ensure header is above other content */
+}
+
+/* Ensure the list items are displayed inline */
+.header-top ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 10px;
+    /* Add gap here instead of repeating in global ul */
+    font-size: 30px;
+    /* Move this here if it applies only to header-top ul */
+}
+
+.header-top ul li {
+    margin: 0 10px;
+    text-align: center;
+}
+
+/* Default icon color */
+.header-top ul li a i {
+    font-size: smaller;
+    color: #000;
+    /* Default icon color (black) */
+    transition: color 0.3s ease;
+    /* Smooth transition for color change */
+}
+
+/* Change icon color on hover */
+.header-top ul li a:hover i {
+    color: #e58f8f;
+}
+
+.logo {
+    width: 250px;
+    padding-top: 10px;
+    padding-right: 20px;
+    cursor: pointer;
+}
+
+nav {
+    width: 100%;
+    height: 50px;
+    max-width: 1200px;
+    /* Constrain width to prevent overflow */
+    min-width: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 10px;
+    /* Add some space between the header content and nav */
+}
+
+/*Nav font*/
+nav a {
+    position: relative;
+    text-decoration: none;
+    font-family: "DynaPuff", serif;
+    font-weight: 100;
+    color: black;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+    padding: 0px 6px;
+}
+
+/*bottom line for nav*/
+nav a:after {
+    content: "";
+    position: absolute;
+    background-color: #e58f8f;
+    height: 3px;
+    width: 0;
+    left: 0;
+    bottom: 2px;
+    transition: 0.5s;
+}
+
+/* Change color on hover */
+nav a:hover {
+    color: #e58f8f;
+}
+
+nav a:hover:after {
+    width: 100%;
+}
+
+/*Marketplace button*/
+.header-top ul li button {
+    padding: 10px 20px;
+    /* Padding inside the button */
+    border-radius: 20px;
+    color: #e58f8f;
+    font-size: 12px;
+    background-color: #ffffff;
+    border: 2px solid #e58f8f;
+    cursor: pointer;
+    /* Pointer cursor on hover */
+    transition: all 0.3s ease;
+    /* Smooth transition for hover effects */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.header-top ul li button:hover {
+    background-color: #e58f8f;
+    color: #ffffff;
+    border-color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.header-top ul li button a {
+    text-align: center;
+    font-family: "DynaPuff", serif;
+    text-decoration: none;
+    /* Remove underline */
+    color: inherit;
+    /* Inherit text color from the button */
+    display: block;
+    /* Make the link fill the button */
+}
+
+/* Header Dropdown button */
+.dropbtn {
+    text-decoration: none;
+    font-family: "DynaPuff", serif;
+    color: black;
+    font-size: 18px;
+    padding: 10px 10px;
+    display: inline-block;
+    cursor: pointer;
+    z-index: 1000;
+    /* Ensure button is above other content */
+    gap: 5px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    z-index: 1000;
+}
+
+.dropdown-content {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    border-radius: 5px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+    text-align: left;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    gap: 10px;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    font-size: 16px;
+    display: block;
+    transition: background-color 0.3s ease;
+    font-family: 'DynaPuff', serif;
+}
+
+/* Prevent underline effect under dropdown */
+.dropdown-content a:after {
+    display: none;
+}
+
+/* Change background color on hover */
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+    color: #e58f8f;
+}
+
+/* Show dropdown when hovering over parent */
+.dropdown:hover .dropdown-content {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.dropdown-content a i {
+    font-size: 18px !important;
+    /* Force icon size */
+    margin-right: 8px;
+    /* Space between the icon and the text */
+}
+
+.user-name {
+    font-family: "Playpen Sans", serif;
+    font-weight: bolder;
+    font-size: 14px;
+    color: #000000;
+    margin-left: px;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.profile-photo-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.search-header {
+    padding: 12px 16px;
+    margin: 10px auto;
+    text-align: center;
+    font-family: 'Playpen Sans', serif;
+    color: #333;
+    border-bottom: 2px solid #f59ca4;
+}
+
+.search-header h2 {
+    margin: 0;
+    font-size: 25px;
+    color: #444;
+    font-weight: 500;
+}
+
+.no-products {
+    font-weight: 500;
+    color: #777;
+    font-family: 'Playpen Sans', serif;
+    font-size: 45px;
+    width: 100%;
+    white-space: nowrap;
+    text-align: center;
+}
+
+.search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-container form {
+    left: 1px;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.search-container input {
+    width: 170px;
+    padding: 8px 12px;
+    padding-right: 35px;
+    border: 1px solid transparent;
+    transition: 0.4s ease-in-out;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 25px;
+    transition: width 0.3s ease;
+    font-family: "Playpen Sans", serif;
+    font-size: 15px;
+    outline: none;
+}
+
+.search-container input:focus {
+    width: 250px;
+    border-color: #e58f8f;
+    border-width: 2px;
+    outline: none;
+}
+
+.search-container button {
+    position: absolute;
+    right: 15px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    color: #e58f8f;
+}
+
+.search-container button i {
+    font-size: 1rem;
+}
+
+.header-top ul li button {
+    padding: 10px 20px;
+    /* Padding inside the button */
+    border-radius: 20px;
+    /* Rounded corners */
+    color: #e58f8f;
+    /* Text color */
+    font-size: 12px;
+    /* Font size */
+    background-color: #ffffff;
+    /* Background color */
+    border: 2px solid #e58f8f;
+    /* Border color matching the text */
+    cursor: pointer;
+    /* Pointer cursor on hover */
+    transition: all 0.3s ease;
+    /* Smooth transition for hover effects */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow for depth */
+}
+
+.header-top ul li button:hover {
+    background-color: #e58f8f;
+    /* Background color on hover */
+    color: #ffffff;
+    /* Text color on hover */
+    border-color: #ffffff;
+    /* Border color on hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    /* Enhanced shadow on hover */
+}
+
+.header-top ul li button a {
+    text-align: center;
+    /* Center-align the text */
+    font-family: "DynaPuff", serif;
+    /* Custom font */
+    text-decoration: none;
+    /* Remove underline */
+    color: inherit;
+    /* Inherit text color from the button */
+    display: block;
+    /* Make the link fill the button */
+}
+
+main {
+    flex: 1;
+}
+
+main h1 {
+    margin-top: 0;
+}
+
+/* Footer container */
+footer {
+    background: #ffdfdf;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: "Playpen Sans", serif;
+    color: #555;
+    padding: 20px 0;
+}
+
+/* Flexbox layout */
+.footer-flex {
+    display: flex;
+    gap: 20px;
+    /* Space between columns */
+    align-items: flex-start;
+    /* Align items to the top */
+    padding: 30px 50px;
+    margin: 0;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Logo column */
+.logo-column {
+    flex: 1;
+    /* Takes up 1 part of the available space */
+    text-align: center;
+}
+
+.logo-column .logo {
+    width: 30%;
+    height: auto;
+    margin-top: 20px;
+    text-align: left;
+    min-width: 25px;
+}
+
+.logo-column .description {
+    flex: 1;
+    text-align: left;
+    margin-top: 15px;
+    word-wrap: break-word;
+    font-size: 14px;
+    overflow-y: visible;
+    line-height: 1.5;
+    word-wrap: normal;
+    hyphens: auto;
+    padding-right: 40px;
+}
+
+/* Other columns */
+.shopping-column,
+.care-column,
+.about-column,
+.social-column {
+    flex: 0.6;
+    /* Each column takes up equal space */
+    text-align: left;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    font-size: 16px;
+}
+
+.shopping-column h3,
+.care-column h3,
+.about-column h3,
+.social-column h3 {
+    margin-bottom: -10px;
+}
+
+.shopping-column p,
+.care-column p,
+.about-column p,
+.social-column p {
+    margin-bottom: -15px;
+}
+
+footer a {
+    color: inherit;
+    /* Inherit text color */
+    text-decoration: none;
+    /* Remove underline */
+}
+
+footer a:hover {
+    text-decoration: underline;
+    /* Add underline on hover */
+    color: #e58f8f;
+}
+
+.social-icons {
+    display: flex;
+    /* Display icons in a row */
+    gap: 20px;
+    /* Space between icons */
+    justify-content: left;
+    /* Align icons to the left */
+    align-items: center;
+    /* Center icons vertically */
+    margin-top: 10px;
+}
+
+/* Icon styling */
+.social-icons a {
+    color: inherit;
+    /* Inherit text color */
+    text-decoration: none;
+    /* Remove underline */
+    font-size: 24px;
+    /* Adjust icon size */
+}
+
+.social-icons a:hover {
+    opacity: 0.7;
+    /* Add hover effect */
+    color: #e58f8f;
+}
+
+.cart-count {
+    background-color: #e58f8f;
+    color: white;
+    font-size: 8px;
+    padding: 2px 6px;
+    border-radius: 50%;
+    position: fixed !important;
+    margin-top: 4px;
+    right: 58px;
+    font-family: "Playpen Sans", serif;
+    font-weight: bold;
+}
+
+.wishlist-count {
+    background-color: #e58f8f;
+    color: white;
+    font-size: 8px;
+    padding: 2px 6px;
+    border-radius: 50%;
+    position: fixed !important;
+    margin-top: 7px;
+    right: 115px;
+    font-family: "Playpen Sans", serif;
+    font-weight: bold;
+}
+
+/*Error Message*/
+span {
+    color: red;
+}
+
+.form-container {
+    margin-top: 90px;
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+}
+
+
+.form-input {
+    width: 95%;
+    padding: 10px;
+    border: 1px solid #e58f8f;
+    border-radius: 15px;
+    font-size: 14px;
+    color: #000000;
+    background-color: #ffffff;
+    transition: border-color 0.5s ease;
+    font-family: "Playpen Sans", serif;
+}
+
+.form-input:focus {
+    border-color: #ff6363;
+    outline: none;
+}
+
+.form-button {
+    background-color: #e58f8f;
+    width: 100%;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 15px;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 4px 0 #d87373;
+    /* 3D effect */
+    transition: all 0.4s ease;
+    font-family: "Playpen Sans", serif;
+    text-decoration: none;
+}
+
+.form-button:hover {
+    background-color: #ff6363;
+    box-shadow: 0 4px 0 #e58f8f;
+}
+
+.form-button:active {
+    box-shadow: 0 2px 0 #d87373;
+    /* Push effect when clicked */
+    transform: translateY(3px);
+}
+
+/*===========================================
+                PAGINATION
+=============================================*/
+
+/*Pagination Design*/
+.pagination {
+    position: fixed;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    max-width: 500px;
+    text-align: left;
+    gap: 5px;
+}
+
+.pagination a,
+.pagination span {
+    display: inline-block;
+    min-width: 32px;
+    height: 32px;
+    line-height: 32px;
+    padding: 0 5px;
+    border: 1px solid #e58f8f;
+    border-radius: 15px;
+    color: #e58f8f;
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+/* Prevent underline effect under dropdown */
+.pagination a:after {
+    display: none;
+}
+
+.pagination a:hover {
+    background-color: #e58f8f;
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+.pagination .current {
+    background-color: #e58f8f;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.pagination .disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+/* Arrow specific styling */
+.pagination .prev,
+.pagination .next {
+    font-weight: bold;
+    min-width: 40px;
+}
+
+/* Ellipsis styling */
+.pagination .ellipsis {
+    border: none;
+    pointer-events: none;
+}

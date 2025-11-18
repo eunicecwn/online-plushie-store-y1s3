@@ -1,0 +1,227 @@
+/* Wishlist Container */
+.wishlist-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.wishlist-container h1 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+.wishlist-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    justify-content: center;
+    width: 100%;
+    margin-left: 85px;
+    margin-bottom: 20px;
+}
+
+.wishlist-item {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* Evenly distribute content */
+    min-height: 360px;
+    /* Ensures all wishlist cards have the same height */
+    font-family: "Playpen Sans", serif;
+}
+
+.wishlist-item:hover {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.wishlist-image {
+    width: 100%;
+    height: 280px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff0f5;
+}
+
+.wishlist-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+}
+
+/* Wishlist Details */
+.wishlist-details {
+    padding: 15px;
+    text-align: center;
+}
+
+.wishlist-details h3 {
+    font-size: 18px;
+    color: #333;
+    margin: 5px 0;
+    font-weight: 500;
+}
+
+.wishlist-details .price {
+    font-size: 16px;
+    color: #333;
+    margin: 10px 0;
+}
+
+.button-group {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    /* Change this to whatever gap you want */
+}
+
+.button-group form {
+    margin: 0;
+    padding: 0;
+    width: 120px;
+    /* fixed width */
+}
+
+.remove-from-wishlist,
+.add-to-cart {
+    margin: 0;
+    width: 100%;
+    background-color: #feabab;
+    color: white;
+    border: none;
+    padding: 10px 0;
+    font-size: 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-family: "Playpen Sans", serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-left: 14px;
+    margin-bottom: 15px;
+    margin-top: -10px;
+}
+
+
+.remove-from-wishlist:hover,
+.add-to-cart:hover {
+    background-color: #f59ca4;
+}
+
+h2.wishlist-title {
+    text-align: center;
+    font-weight: 450;
+    font-size: 50px;
+    font-family: "Playpen Sans", serif;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.wishlist-item a {
+    color: inherit;
+    text-decoration: none;
+    color: #f59ca4;
+}
+
+.empty-wishlist {
+    text-align: center;
+    padding: 20px;
+}
+
+.empty-wishlist p {
+    font-weight: 400;
+    text-align: center;
+    font-size: 25px;
+    padding: 15px;
+    /* Add padding around the text */
+    margin: 50px auto;
+    /* Add margin around the paragraph */
+    color: #5a5a5a;
+    font-family: "Playpen Sans", serif;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.empty-wishlist h2 {
+    font-weight: 450;
+    text-align: center;
+    font-size: 50px;
+    padding: 15px;
+    /* Add padding around the text */
+    margin: 50px auto;
+    /* Add margin around the paragraph */
+    color: #5a5a5a;
+    font-family: "Playpen Sans", serif;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.empty-wishlist .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #ffdfdf;
+    color: #333;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-family: "Playpen Sans", serif;
+}
+
+/*===========================================
+               UPDATED MESSAGE
+=============================================*/
+#info {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.9);
+    /* White with slight transparency */
+    color: #333;
+    border-radius: 12px;
+    padding: 40px 60px;
+    font-size: 20px;
+    font-weight: 600;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+
+    display: flex;
+    flex-direction: column;
+    /* Stack tick and text */
+    align-items: center;
+    text-align: center;
+
+    opacity: 0;
+    z-index: 999;
+    transition: opacity 1.0s ease-in-out;
+}
+
+/* Green Tick */
+#info::before {
+    content: '✔';
+    font-size: 60px;
+    color: #28a745;
+    font-weight: bold;
+    margin-bottom: 15px;
+    /* Space between tick and text */
+}
+
+/* Show the popup when it has content */
+#info:not(:empty) {
+    animation: fade 14s ease-in-out;
+}
+

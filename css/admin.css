@@ -1,0 +1,1629 @@
+/*===========================================
+                    BODY
+=============================================*/
+body {
+    display: flex;
+    justify-content: center;                                /* Center horizontally */
+    align-items: center;                                    /* Center vertically */
+    min-height: 100vh;                                      /* Full viewport height */
+    margin: 0;
+    background-color: #f1f1f1;                            /* Match your background color */
+    font-family: "Playpen Sans", serif;
+}
+
+main {
+    flex: 1;
+}
+
+/*===========================================
+                    HEADER
+=============================================*/
+
+header {
+    display: flex;
+    flex-direction: column;                                 /* Change to row for horizontal layout */
+    justify-content: space-between;                         /* Space out logo and nav */             
+    align-items: center;
+    padding: 10px 0px;
+    background: rgba(255, 255, 255, 0.2);
+    position: fixed;
+    width: 100%;
+    backdrop-filter: blur(10px);
+    top: 0;
+    left: 0;                                                /* Ensure it starts from the left edge */
+    right: 0;                                               /* Ensure it starts from the right edge */
+    z-index: 100;                                           /* Ensure header is above other content */
+}
+
+.header-top {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    max-width: 1400px;                                      /* Ensure header is above other content */
+}
+
+/* Ensure the list items are displayed inline */
+.header-top ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 10px;                                              /* Add gap here instead of repeating in global ul */
+    font-size: 30px;                                        /* Move this here if it applies only to header-top ul */
+}
+
+.header-top ul li {
+    margin: 0 10px;
+    text-align: center;
+}
+
+/* Default icon color */
+.header-top ul li a i {
+    font-size: smaller;
+    color: #000;                                          /* Default icon color (black) */
+    transition: color 0.3s ease;                            /* Smooth transition for color change */
+}
+
+/* Change icon color on hover */
+.header-top ul li a:hover i {
+    color: #e58f8f;
+}
+
+.logo {
+    width: 250px;
+    padding-top: 10px;
+    padding-right: 20px;
+    cursor: pointer;
+}
+
+nav {
+    width: 100%;
+    height: 50px;
+    max-width: 1200px;                                      /* Constrain width to prevent overflow */
+    min-width: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 10px;                                       /* Add some space between the header content and nav */
+}
+
+/*Nav font*/
+nav a {
+    position: relative;
+    text-decoration: none;
+    font-family: "DynaPuff", serif;
+    font-weight: 100;
+    color: black;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+    padding: 0px 6px;
+}
+
+/*bottom line for nav*/
+nav a:after {
+    content: "";
+    position: absolute;
+    background-color: #e58f8f;
+    height: 3px;
+    width: 0;
+    left: 0;
+    bottom: 2px;
+    transition: 0.5s;
+}
+
+/* Change color on hover */
+nav a:hover {
+    color: #e58f8f;
+}
+
+nav a:hover:after {
+    width: 100%;
+}
+
+/*Marketplace button*/
+.marketplace-button{
+    padding: 10px 20px;                                 /* Padding inside the button */
+    border-radius: 20px;
+    color: #e58f8f;
+    font-size: 12px;
+    background-color: #ffffff;
+    border: 2px solid #e58f8f;
+    cursor: pointer;                                    /* Pointer cursor on hover */
+    transition: all 0.3s ease;                          /* Smooth transition for hover effects */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-family: "DynaPuff", serif;
+    text-decoration: none;                              /* Remove underline */
+    display: block;                                     /* Make the link fill the button */
+}
+
+.marketplace-button:hover {
+    background-color: #e58f8f;
+    color: #ffffff;
+    border-color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Header Dropdown button */
+.dropbtn {
+    text-decoration: none;
+    font-family: "DynaPuff", serif;
+    color: black;
+    font-size: 18px;
+    padding: 10px 16px;
+    display: inline-block;
+    cursor: pointer;
+    z-index: 1000;                                      /* Ensure button is above other content */
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    z-index: 1000;
+}
+
+.dropdown-content {
+    text-align: left;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff;
+    min-width: 250px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    border-radius: 5px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    gap : 10px;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    font-size: 16px;
+    display: block;
+    transition: background-color 0.3s ease;
+    font-family: 'DynaPuff', serif;
+}
+
+/* Prevent underline effect under dropdown */
+.dropdown-content a:after {
+    display: none;
+}
+
+/* Change background color on hover */
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+    color : #e58f8f;
+}
+
+/* Show dropdown when hovering over parent */
+.dropdown:hover .dropdown-content {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.dropdown-content a i {
+    font-size: 18px !important; /* Force icon size */
+    margin-right: 8px; /* Space between the icon and the text */
+}
+
+.user-name {
+    font-family: "Playpen Sans", serif;
+    font-weight: bolder;
+    font-size: 14px;
+    color: #000000;
+    margin-left: px;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    overflow: hidden;       /* Hides any overflowed text */
+    text-overflow: ellipsis; /* Adds "..." for overflowing text */
+}
+
+.profile-photo-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/*===========================================
+                ADD CATEGORY
+=============================================*/
+
+h1 {
+    font-family: "Playpen Sans", serif;
+    font-size: 35px;
+    color: #e58f8f;
+}
+
+/* Form Group */
+.form-container {
+    margin-top: 90px;
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 5px;
+    font-family: "Playpen Sans", serif;
+}
+
+
+/* Input Fields */
+.form-input {
+    width: 95%;
+    padding: 10px;
+    border: 1px solid #e58f8f;
+    border-radius: 15px;
+    font-size: 14px;
+    color: #000000;
+    background-color: #ffffff;
+    transition: border-color 0.5s ease;
+    font-family: "Playpen Sans", serif;
+}
+
+.form-input:focus {
+    border-color: #ff6363;
+    outline: none;
+}
+
+/* Select Field */
+.form-select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #e58f8f;
+    border-radius: 15px;
+    font-size: 14px;
+    font-family: "Playpen Sans", serif;
+    color: #333;
+    background-color: #ffffff;
+    transition: border-color 0.5s ease;
+}
+
+.form-select:focus {
+    border-color: #ff6363;
+}
+
+/* Form Button */
+.form-button {
+    background-color: #e58f8f;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 15px;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 4px 0 #d87373;                   /* 3D effect */
+    transition: all 0.4s ease;
+    font-family: "Playpen Sans", serif;
+    text-decoration: none;
+}
+
+.form-button:hover {
+    background-color: #ff6363;
+    box-shadow: 0 4px 0 #e58f8f;
+}
+
+.form-button:active {
+    box-shadow: 0 2px 0 #d87373;                  /* Push effect when clicked */
+    transform: translateY(3px);
+}
+
+/*Error Message*/
+span {
+    color: red;
+}
+
+/*===========================================
+               UPDATED MESSAGE
+=============================================*/
+#info {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.9);         /* White with slight transparency */
+    color: #333;
+    border-radius: 12px;
+    padding: 40px 60px;
+    font-size: 20px;
+    font-weight: 600;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+
+    display: flex;
+    flex-direction: column;                         /* Stack tick and text */
+    align-items: center;
+    text-align: center;
+
+    opacity: 0;
+    z-index: 999;
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* Green Tick */
+#info::before {
+    content: '✔';
+    font-size: 60px;
+    color: #28a745;
+    font-weight: bold;
+    margin-bottom: 15px;                        /* Space between tick and text */
+}
+
+/* Show the popup when it has content */
+#info:not(:empty) {
+    animation: fade 2s ease-in-out;
+}
+
+/* Animation Keyframes */
+@keyframes fade {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+    }
+
+    10% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+
+    90% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+    }
+}
+
+/*===========================================
+    MY CATEGORY AND CATEGORY TABLE
+=============================================*/
+/* Category Title */
+.category-title {
+    font-size: 36px;
+    color: black;
+    font-weight: bold;
+    text-align: left;
+    left: 20px;
+    margin: 0;
+    padding: 20px;
+    position: fixed;
+    top: 70px;
+}
+
+/* Category Container */
+.category-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);      /* 3 columns */
+    gap: 40px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 40px;
+    margin-top: 100px;
+}
+
+/* Category Box */
+.category-box {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Category Image */
+.category-box img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 15px 15px 0 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Category Name */
+.category-name {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+    transition: opacity 0.3s ease;
+}
+
+/* Hover Effect */
+.category-box:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Category Subtitle*/
+.category-subtitle {
+    font-size: 28px;
+    color: #e58f8f;
+    position: fixed;
+    top: 110px;
+    left: 40px;
+}
+
+/* Search Form*/
+.search-form {
+    position: fixed;
+    top: 180px;
+    width: 1300px;
+    left: 40px;
+}
+
+.search-form input[type="text"] {
+    width: 400px;
+    padding: 10px;
+    border: 1px solid #e58f8f;
+    border-radius: 15px;
+    font-size: 14px;
+    font-family: "Playpen Sans", serif;
+    color: #333;
+    transition: border-color 0.3s ease;
+}
+
+.search-form input[type="text"]:focus {
+    border-color: #ff6363;
+    outline: none;
+}
+
+/* Search Form Select Option*/
+.search-form select {
+    width: 180px;
+    padding: 10px;
+    border: 1px solid #e58f8f;
+    border-radius: 15px;
+    font-size: 14px;
+    font-family: "Playpen Sans", serif;
+    color: #333;
+    background-color: #ffffff;
+    transition: border-color 0.5s ease;
+}
+
+#categoryName2{
+    width: 280px;
+    padding: 10px;
+    border: 1px solid #e58f8f;
+    border-radius: 15px;
+    font-size: 14px;
+    font-family: "Playpen Sans", serif;
+    color: #333;
+    background-color: #ffffff;
+    transition: border-color 0.5s ease;
+}
+ 
+.search-form select:hover {
+    border-color: #ff6363;
+}
+
+/* Record Count*/
+.record-count {
+    position: fixed;
+    top: 210px;
+    left: 42px;
+    width: 310px;
+}
+
+/*Category Table*/
+.table-container {
+    position: fixed;
+    margin-top: 190px;
+    left: 40px;
+    width: 95%;
+    height: 500px;
+}
+
+.category-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0.2, 0.2, 0.2, 0.2);
+}
+
+.category-table th,
+.category-table td {
+    padding: 12px 16px;
+    text-align: left;
+    font-family: "Playpen Sans", serif;
+    font-size: 14px;
+    color: #333;
+}
+
+.category-table th {
+    background-color: #fad4d4;
+    font-weight: bold;
+}
+
+.category-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.category-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/*Design make the table become round edge*/
+/* Round the top-left corner of the first header cell */
+.category-table th:first-child {
+    border-top-left-radius: 15px;
+}
+
+/* Round the top-right corner of the last header cell */
+.category-table th:last-child {
+    border-top-right-radius: 15px;
+}
+
+/* Round the bottom-left corner of the first cell in the last row */
+.category-table tr:last-child td:first-child {
+    border-bottom-left-radius: 15px;
+}
+
+/* Round the bottom-right corner of the last cell in the last row */
+.category-table tr:last-child td:last-child {
+    border-bottom-right-radius: 15px;
+}
+
+/* Sorting */
+.category-table th a {
+    color: black;
+    display: block;
+    text-decoration: none;
+}
+
+.category-table th a.asc::after {
+    content: ' ▴';
+}
+
+.category-table th a.desc::after {
+    content: ' ▾';
+}
+
+/* No Results Message */
+.no-results {
+    text-align: center;
+    padding: 20px;
+    font-family: "Playpen Sans", serif;
+    font-size: 16px;
+    color: #333;
+}
+
+/*===========================================
+                BUTTON BASE STYLES
+=============================================*/
+.btn, 
+.btn-reset, 
+.search-form button {
+    background-color: #E58F8F;
+    color: #ffffff;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 15px;
+    font-size: 13px;
+    cursor: pointer;
+    box-shadow: 0 4px 0 #d87373;
+    transition: all 0.3s ease;
+    font-family: "Playpen Sans", serif;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+/* Button Hover States */
+.btn:hover,
+.btn-reset:hover, 
+.search-form button:hover {
+    background-color: #ff6363;
+    box-shadow: 0 4px 0 #E58F8F;
+    transform: translateY(-1px);
+}
+
+/* Button Active States */
+.btn:active,
+.btn-reset:active, 
+.search-form button:active {
+    transform: translateY(3px);
+    box-shadow: none;
+}
+
+.btn-edit {
+    background-color: #D3D3D3; /* Light Grey */
+    box-shadow: 0 4px 0 #bcbcbc;
+    color: black; /* White text for contrast */
+    font-weight: bold;
+}
+
+.btn-edit:hover {
+    background-color: #C4C4C4;
+    box-shadow: 0 4px 0 #a9a9a9;
+}
+
+.btn-deactivate {
+    background-color: #E57373; /* Softer Red */
+    box-shadow: 0 4px 0 #cc5c5c;
+    color: black; /* White text for contrast */
+    font-weight: bold;
+}
+
+.btn-deactivate:hover {
+    background-color: #D65C5C;
+    box-shadow: 0 4px 0 #b74c4c;
+}
+
+.btn-activate {
+    background-color: #9ae8a1;  /* Lighter Green */
+    box-shadow: 0 4px 0 #9fc3a4;
+     color: black; /* White text for contrast */
+    font-weight: bold;
+}
+
+.btn-activate:hover {
+    background-color: #A8D8B9;
+    box-shadow: 0 4px 0 #87b999;
+}
+
+/* Status Badges */
+.status-badge {
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+  
+.status-active {
+    background-color: #a8d8b9; /* Matching green */
+    color: #2a5c3d; /* Dark text for contrast */
+    font-weight: bolder;
+  }
+  
+.status-inactive,
+.status-expired {
+    background-color: #e8a0a0; /* Matching red */
+    color: #6d3a3a; /* Dark text */
+    font-weight: bolder;
+}
+
+.status-disabled {
+    background-color: #f0f0f0;
+    color: #555;
+    font-weight: bolder;
+}
+
+/* Icons */
+.btn i {
+    font-size: 15px;
+}
+
+/*===========================================
+                PAGINATION
+=============================================*/
+
+/*Pagination Design*/
+.pagination {
+    position: fixed;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    max-width: 500px;
+    text-align: left;
+    gap: 5px;
+}
+
+.pagination a,
+.pagination span {
+    display: inline-block;
+    min-width: 32px;
+    height: 32px;
+    line-height: 32px;
+    padding: 0 5px;
+    border: 1px solid #e58f8f;
+    border-radius: 15px;
+    color: #e58f8f;
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+/* Prevent underline effect under dropdown */
+.pagination a:after {
+    display: none;
+}
+
+.pagination a:hover {
+    background-color: #e58f8f;
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+.pagination .current {
+    background-color: #e58f8f;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.pagination .disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+/* Arrow specific styling */
+.pagination .prev,
+.pagination .next {
+    font-weight: bold;
+    min-width: 40px;
+}
+
+/* Ellipsis styling */
+.pagination .ellipsis {
+    border: none;
+    pointer-events: none;
+}
+
+/*===========================================
+                ADD PRODUCT
+=============================================*/
+
+.AddProductTitle {
+    font-size: 36px;
+    color: black;
+    font-weight: bold;
+    text-align: left;
+    left: 20px;
+    margin: 0;
+    padding: 20px;
+    position: absolute;
+    top: 70px;
+}
+
+.form-containerproduct {
+    width: 100%;
+    max-width : 1450px;
+    margin-top: 130px;
+    padding: 20px;
+}
+
+/* Each section gets its own box */
+.section-container {
+    background-color: white;
+    padding: 20px 40px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.product-subtitle {
+    font-size: 28px;
+    color: #e58f8f;
+}
+
+.form-input-description {
+    width: 95%;
+    padding: 10px;
+    height: 200px;
+    border: 1px solid #e58f8f;
+    border-radius: 15px;
+    font-size: 16px; /* Slightly larger text */
+    color: #000000;
+    background-color: #ffffff;
+    transition: border-color 0.5s ease;
+    font-family: "Playpen Sans", serif;
+    resize :none;
+}
+
+/* Horizontal layout */
+.form-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+/* Select box styling */
+.product-select-form {
+    width: 100%;
+    max-width: 626px;
+    padding: 10px;
+    border: 1px solid #e58f8f;
+    border-radius: 15px;
+    font-size: 14px;
+    font-family: "Playpen Sans", serif;
+    color: #333;
+    background-color: #ffffff;
+    transition: border-color 0.5s ease;
+}
+
+.product-select-form:focus {
+    border-color: #ff6363;
+    outline: none;
+}
+
+.form-input-number {
+    width: 100%;
+    max-width: 300px;
+    padding: 10px;
+    border: 1px solid #e58f8f;
+    border-radius: 15px;
+    font-size: 14px;
+    color: #000000;
+    background-color: #ffffff;
+    transition: border-color 0.5s ease;
+    font-family: "Playpen Sans", serif;
+}
+
+.product-button {
+    display: flex;
+    justify-content: flex-end; /* Aligns items to the right */
+    gap: 10px; /* Optional: Adds space between buttons */
+}
+
+/*===========================================
+                My Product
+=============================================*/
+.product-title {
+        font-size: 36px;
+        color: black;
+        font-weight: bold;
+        text-align: left;
+        left: 20px;
+        margin: 0;
+        padding: 20px;
+        position: fixed;
+        top: 70px;
+}
+
+.product-scroll {
+    background-color: #f1f1f1;
+    z-index: 1;  /* Corrected z-index without px */
+    position: fixed;
+    top: 95px;  /* Ensures it sticks to the top */
+    left: 0;  /* Ensures it stays on the left side of the page */
+    width: 100%;  /* Makes it span across the page */
+    padding: 10px;
+    height:190px;
+    box-sizing: border-box; /* Ensures padding is included in the total width/height */
+    margin: 0;
+}
+
+/* Main Product Container */
+.product-container {
+    margin-top: 290px;
+    margin-left: 10px;
+    padding: 20px;
+    width: 100%;
+    height:100%;
+    overflow-y: auto; 
+}
+
+/* Grid Layout for Products */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 10px;
+    padding: 10px;
+}
+
+/* Product Card Styling */
+.product-card {
+    background-color: #ffffff;
+    width: 200px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    text-align: left;
+    transition: transform 0.3s ease-in-out;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Product Image */
+.product-image img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.no-image {
+    display: block;
+    color: #888;
+    font-size: 14px;
+}
+
+/* Product Name */
+.product-name {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    width: 200px;           /* Set a fixed width */
+    white-space:nowrap;    /* Prevents text from wrapping onto the next line */
+    overflow: hidden;       /* Hides any overflowed text */
+    text-overflow: ellipsis; /* Adds "..." for overflowing text */
+}
+
+/* Stock Quantity */
+.product-stock {
+    color: #525252;
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-weight: lighter;
+}
+
+/* Product Price */
+.product-price {
+    font-size: 16px;
+    color: #E57373;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+/* Status Badge */
+.product-status .status-badge {
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.product-status .status-available {
+    background-color: #a8d8b9; /* Matching green */
+    color: #2a5c3d; /* Dark text for contrast */
+    font-weight: bolder;
+}
+
+.product-status .status-delisted {
+    background-color: #e8a0a0; /* Matching red */
+    color: #6d3a3a; /* Dark text */
+    font-weight: bolder;
+}
+
+/* Action Buttons */
+.product-actions {
+    margin-top: 15px;
+}
+
+.product-actions .btn-edit {
+    background-color: #D3D3D3; /* Light Grey */
+    box-shadow: 0 4px 0 #bcbcbc;
+    color: black; /* White text for contrast */
+    font-weight: bold;
+}
+
+.product-actions .btn-edit:hover {
+    background-color: #C4C4C4;
+    box-shadow: 0 4px 0 #a9a9a9;
+}
+
+.product-actions .btn-deactivate {
+    background-color: #E57373; /* Softer Red */
+    box-shadow: 0 4px 0 #cc5c5c;
+    color: black;
+    font-weight: bold;
+}
+
+.product-actions .btn-deactivate:hover {
+    background-color: #D65C5C;
+    box-shadow: 0 4px 0 #b74c4c;
+}
+
+.product-actions.btn-activate {
+    background-color: #9ae8a1;  /* Lighter Green */
+    box-shadow: 0 4px 0 #9fc3a4;
+    color: black; 
+    font-weight: bold;
+}
+
+.product-actions .btn-activate:hover {
+    background-color: #A8D8B9;
+    box-shadow: 0 4px 0 #87b999;
+}
+
+.sort-bar {
+    background-color: #f8f8f8;
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    position: fixed;
+    top: 220px;
+    left: 40px;
+    width: 1410px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.sort-bar a.sort-link {
+    margin: 0 10px;
+    color: #333;
+    text-decoration: none;
+}
+
+.sort-bar a.sort-link.asc::after {
+    content: ' ▴';
+}
+
+.sort-bar a.sort-link.desc::after {
+    content: ' ▾';
+}
+
+.sort-bar a.sort-link:hover {
+    color: #E57373;
+}
+
+.product-tags{
+    font-size: 12px;
+}
+
+.tag-badge {
+    display: inline-block;
+    background-color: #f0f0f0;
+    color: #555;
+    padding: 4px 10px;
+    margin: 3px 3px 0 0;
+    border-radius: 12px;
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+#product-searchform{
+        position: fixed;
+        top: 150px;
+        width: 1300px;
+        left: 40px;
+}
+
+#product-count{
+    top: 190px;
+    left: 42px;
+    width: 310px;
+}
+
+/*===========================================
+                STAFF/VOUCHER
+=============================================*/
+
+.staff-title {
+    font-size: 36px;
+    color: black;
+    font-weight: bold;
+    text-align: left;
+    left: 20px;
+    margin: 0;
+    padding: 20px;
+    position: fixed;
+    top: 95px;
+}
+
+/*===========================================
+                PHOTO PREVIEW
+=============================================*/
+/* Image Preview Container - Keeping your original colors */
+.image-preview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 15px 0;
+    min-height: 160px;
+    max-width : 1290px;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #fafafa;
+    border: 1px dashed #e0e0e0;
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+/* Drop Zone Highlight - Original pink/red colors */
+.image-preview.drop-here {
+    background-color: #fff0f0;
+    border-color: #e58f8f;
+    box-shadow: 0 0 0 3px rgba(229, 143, 143, 0.2);
+}
+
+/* Image Cards - Your original styling */
+.preview-item {
+    width: 120px;
+    height: 120px;
+    position: relative;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    overflow: hidden;
+    background-color: #ffffff;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    cursor: grab;
+    user-select: none; /* Prevent text selection during drag */
+}
+
+.preview-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    border-color: #e58f8f;
+}
+
+/* Cover Image - Your original pink/red styling */
+.preview-item.cover-image {
+    border: 3px solid #e58f8f;
+    box-shadow: 0 0 0 3px rgba(229, 143, 143, 0.3);
+    position: relative;
+}
+
+.preview-item.cover-image::after {
+    content: 'MAIN IMAGE';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(229, 143, 143, 0.9);
+    color: white;
+    padding: 4px 0;
+    font-size: 10px;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Image Content - No changes */
+.preview-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+    pointer-events: none; /* Critical fix for drag */
+}
+
+.preview-item:hover img {
+    transform: scale(1.05);
+}
+
+/* Remove Button - Original styling */
+.remove-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 24px;
+    height: 24px;
+    background: rgba(229, 143, 143, 0.9);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 14px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    z-index: 2;
+}
+
+.preview-item:hover .remove-btn {
+    display: flex;
+}
+
+.remove-btn:hover {
+    background: #d87373;
+    transform: scale(1.1);
+}
+
+/* Drag State - Your original colors with fixes */
+.preview-item.dragging {
+    opacity: 0.6;
+    transform: scale(0.95);
+    border: 2px dashed #e58f8f;
+    background-color: rgba(229, 143, 143, 0.1);
+    cursor: grabbing;
+}
+
+/* Drop Target Indicators - Using your color scheme */
+.preview-item.drop-above {
+    border-top: 3px solid #e58f8f;
+}
+
+.preview-item.drop-below {
+    border-bottom: 3px solid #e58f8f;
+}
+
+/* Add Button - Original styling */
+.add-btn-container {
+    width: 120px;
+    height: 120px;
+    transition: all 0.3s ease;
+}
+
+.add-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border: 2px dashed #e58f8f;
+    border-radius: 6px;
+    background-color: rgba(229, 143, 143, 0.05);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.add-btn:hover {
+    border-color: #d87373;
+    background-color: rgba(229, 143, 143, 0.1);
+    transform: translateY(-2px);
+}
+
+.add-btn span:first-child {
+    font-size: 28px;
+    color: #e58f8f;
+    transition: all 0.3s ease;
+}
+
+.add-btn span:last-child {
+    font-size: 12px;
+    color: #e58f8f;
+    margin-top: 8px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.add-btn:hover span:first-child {
+    transform: scale(1.15);
+}
+
+.add-btn:hover span:last-child {
+    color: #d87373;
+}
+
+/* Empty State - No changes */
+.image-preview:empty::before {
+    content: 'No images selected';
+    color: #999;
+    font-size: 14px;
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Animation - No changes */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.preview-item {
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Tags styling */
+.preview-tags {
+    margin: 15px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+}
+
+.tag-pill {
+    background: #f0f0f0;
+    color: #555;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    display: inline-block;
+}
+
+.tag-pill:hover {
+    background: #e0e0e0;
+}
+
+
+.preview-item {
+    position: relative;
+    cursor: move; /* Show grab cursor */
+}
+
+.preview-item.dragging {
+    opacity: 0.5;
+    border: 2px dashed #666;
+}
+
+
+/*===========================================
+              PROFILE PHOTO
+=============================================*/
+.profile-img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #e58f8f;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.profile-img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 3px #fad4d4;
+}
+
+.fa-regular.fa-circle-user {
+    font-size: 1.8rem;
+    color: #e58f8f;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.fa-regular.fa-circle-user:hover {
+    color: #d87373;
+    transform: scale(1.1);
+}
+
+/* ==============================
+        DASHBOARD CONTAINER
+============================== */
+.dashboard-container {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: 'Playpen Sans', cursive;
+}
+
+/* ==============================
+        DASHBOARD TITLE
+============================== */
+.dashboard-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    text-align: center;
+    color: #333;
+}
+
+/* ==============================
+        STAT CARDS GRID
+============================== */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.stat-card {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.stat-content h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: #555;
+}
+
+.stat-content p {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.stat-card i {
+    font-size: 2.5rem;
+    color: #9370DB;
+}
+
+/* ==============================
+        CHARTS SECTION
+============================== */
+.charts-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+}
+
+.chart-container {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+}
+
+.chart-card h3 {
+    margin-bottom: 1rem;
+    text-align: center;
+    font-size: 1.5rem;
+    color: #555;
+}
+
+.chart-card canvas {
+    width: 100% !important;
+    height: 300px !important;
+}
+
+/*===========================================
+     ORDER DETAILS TABLE STYLES
+=============================================*/
+
+.order-details-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0.2, 0.2, 0.2, 0.1);
+    margin-top: 20px;
+}
+
+.order-details-table th, 
+.order-details-table td {
+    padding: 12px 16px;
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+}
+
+.order-details-table th {
+    background-color: #fad4d4;
+    font-weight: bold;
+}
+
+.order-details-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.order-details-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Rounded Edges */
+.order-details-table th:first-child {
+    border-top-left-radius: 15px;
+}
+
+.order-details-table th:last-child {
+    border-top-right-radius: 15px;
+}
+
+.order-details-table tr:last-child td:first-child {
+    border-bottom-left-radius: 15px;
+}
+
+.order-details-table tr:last-child td:last-child {
+    border-bottom-right-radius: 15px;
+}
+
+.order-details-table th a {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.order-details-table th a:hover {
+    color: #d87373;
+    text-decoration: underline;
+}
+
+/* No Items Found Styling */
+.no-items {
+    text-align: center;
+    font-size: 16px;
+    color: #999;
+    padding: 15px;
+}
+
+/* Product Column (Image and Name Alignment) */
+.product-column {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Product Image Styling */
+.product-image-details img{
+    max-height: 80px;
+    width: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+/* Product Image Hover Effect */
+.product-image-details img:hover {
+    transform: scale(1.05);
+}
+
+/* Product Name Styling */
+.product-name {
+    flex-grow: 1;
+    font-weight: bold;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Member Info Section */
+.profile-info {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6; /* Ensures better vertical alignment */
+}
+
+.profile-info p {
+    display: flex;
+    justify-content: flex-start; /* Align items to the left */
+    margin: 8px 0;
+}
+
+.profile-info strong {
+    flex: 0 0 150px; /* Ensures labels are of fixed width */
+    text-align: left; /* Align labels to the left */
+}
+
+.profile-info span {
+    color: #555;
+    flex-grow: 1;
+    text-align: left; /* Align values to the left */
+    min-width: 0; /* Prevent overflow */
+    display: inline-block;
+}
+
+.profile-info span::before {
+    content: ":"; /* Adds the colon */
+    margin-right: 5px; /* Adds space between colon and value */
+}

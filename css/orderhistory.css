@@ -1,0 +1,140 @@
+h2 {
+    text-align: center;
+    font-weight: 450;
+    font-size: 50px;
+    margin-top: -30px;
+    margin-bottom: 25px;
+    font-family: "Playpen Sans", serif;
+    color: #555;
+}
+
+.order-table {
+    width: 900px;
+    border-collapse: collapse;
+    font-family: 'Playpen Sans', cursive;
+    margin-bottom: 30px;
+}
+
+.order-table th,
+.order-table td {
+    padding: 12px 30px;
+    text-align: left;
+    border-bottom: 1px solid #ffcce5;
+}
+
+.order-table th {
+    background-color: #fff0f5;
+    color: #555;
+}
+
+.order-summary {
+    background-color: #fff;
+    border: 2px solid #ffd6e8;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 40px;
+}
+
+.order-summary h3 {
+    color: #f59ca4;
+    margin-bottom: 10px;
+}
+
+.order-items img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-right: 10px;
+    border: 1px solid #ffb6c1;
+}
+
+.order-items {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.order-item {
+    display: flex;
+    align-items: center;
+}
+
+.order-item-details p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.order-filter {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 8px 16px;
+    background-color: #ffe4e4;
+    border: none;
+    border-radius: 20px;
+    font-family: 'Playpen Sans', cursive;
+    color: #333;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.filter-btn:hover {
+    background-color: #ffcccc;
+}
+
+.filter-btn.active {
+    background-color: #ffb6b6;
+    font-weight: bold;
+}
+
+.order-received-btn {
+    background-color: #ffb6b6;
+    color: white;
+    border: none;
+    padding: 11px 22px;
+    border-radius: 15px;
+    font-family: 'Playpen Sans', cursive;
+    font-size: 16px;
+    cursor: pointer;
+    margin-right: 15px;
+    margin-bottom: 5px;
+}
+
+.order-received-btn:hover {
+    background-color: #ffb6c1;
+}
+
+.fixed-top-bar {
+    position: fixed;
+    top: 90px;
+    left: 0;
+    width: 100%;
+    background: #fff4f4;
+    padding: 20px 0 10px 0;
+    text-align: center;
+    z-index: 1;
+}
+
+.fixed-top-bar h2 {
+    margin: 0 0 10px 0;
+    font-family: 'Playpen Sans', cursive;
+}
+
+.filter-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.page-content {
+    padding-top: 160px; /* Enough space for fixed top bar height */
+    max-width: 1000px;
+    margin: 0 auto 70px auto;
+    font-family: 'Playpen Sans', cursive;
+}

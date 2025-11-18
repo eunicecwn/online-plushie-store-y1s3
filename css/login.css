@@ -1,0 +1,392 @@
+body {
+    width: 100%;
+    overflow-x: hidden;
+    margin: 0;
+    margin-top: 100px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff4f4;
+    font-family: "Playpen Sans", serif;
+}
+
+/*===========================================
+            SIGN UP / LOGIN
+=============================================*/
+
+.form-container-signup {
+    position: fixed;
+    margin-top: 50px;
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    max-width: 450px;
+    height: 600px;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    left: 500px;
+    top: 70px;
+}
+
+.form-container-login {
+    position: fixed;
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    left: 550px;
+    top: 150px;
+}
+
+.form-content-scroll {
+    flex: 1;
+    overflow-y: auto;
+    margin-top: 20px;
+    padding-right: 10px;
+}
+
+.form-content-scroll form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Optional scrollbar styling */
+.form-content-scroll::-webkit-scrollbar {
+    width: 6px;
+}
+
+.form-content-scroll::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 3px;
+}
+
+.form-content-scroll::-webkit-scrollbar-thumb:hover {
+    background: #999;
+}
+
+.form-group {
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: #555;
+    font-size: 15px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"] {
+    width: 93%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: border-color 0.3s;
+    font-family: "Playpen Sans", serif;
+    text-align: left;
+}
+
+.form-group input {
+    width: 93%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: border-color 0.3s;
+    font-family: "Playpen Sans", serif;
+}
+
+.form-group input:focus {
+    border-color: #e58f8f;
+    outline: none;
+}
+
+label {
+    display: block;
+    font-size: 14px;
+    color: #555;
+    font-family: "Playpen Sans", serif;
+}
+
+.user-icon {
+    font-size: 110px;
+    color: #e58f8f;
+    display: block;
+    margin: 0 auto 20px;
+    text-align: center;
+}
+
+h1 {
+    font-family: "Playpen Sans", serif;
+    font-size: 35px;
+    color: #e58f8f;
+}
+
+/* Form Button */
+.form-button {
+    background-color: #e58f8f;
+    width: 100%;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 15px;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 4px 0 #d87373;
+    /* 3D effect */
+    transition: all 0.4s ease;
+    font-family: "Playpen Sans", serif;
+    text-decoration: none;
+}
+
+.form-button:hover {
+    background-color: #ff6363;
+    box-shadow: 0 4px 0 #e58f8f;
+}
+
+.form-button:active {
+    box-shadow: 0 2px 0 #d87373;
+    /* Push effect when clicked */
+    transform: translateY(3px);
+}
+
+textarea {
+    width: 93%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: border-color 0.3s;
+    font-family: "Playpen Sans", serif;
+    text-align: left;
+    resize: vertical; 
+}
+
+textarea:focus {
+    border-color: #e58f8f;
+    outline: none;
+}
+
+/*Error Message*/
+span {
+    color: red;
+}
+
+.error-message {
+    color: #ff4d4d;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.profile-photo-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+#profilePreview {
+    display: block;
+    /* Ensures it's properly displayed */
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    /* Ensures the image fills the circle */
+    border: 2px solid #e58f8f;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+/* Button to Choose Profile Picture */
+.choose-photo-btn {
+    width: 45%;
+    background-color: #e58f8f;
+    color: white;
+    padding: 3px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: "Playpen Sans", serif;
+}
+
+.choose-photo-btn:hover {
+    background-color: #ff6363;
+}
+
+/* Hide file input */
+#profilePhoto {
+    display: none;
+}
+
+.link-signup-login {
+    color: #666;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.link-signup-login:hover {
+    color: #d87373;
+    text-decoration: underline;
+}
+
+/*===========================================
+            FORGOT PASSWORD 
+=============================================*/
+
+.forgot-password-link {
+    margin: 0 5px 5px 0;
+    font-size: 14px;
+    text-align: left;
+    color: #666;
+}
+
+.forgot-password-link a {
+    color: #666;
+    text-decoration: none;
+}
+
+.forgot-password-link a:hover {
+    color: #d87373;
+    text-decoration: underline;
+}
+
+
+/*===========================================
+                LOGOUT PAGE
+=============================================*/
+/* Popup Overlay */
+
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    font-family: "Playpen Sans", serif;
+}
+
+/* Popup Content */
+.popup-content {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    animation: popIn 0.3s ease-out;
+    font-family: "Playpen Sans", serif;
+}
+
+@keyframes popIn {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.popup-icon {
+    font-size: 100px;
+    color: #e58f8f;
+    margin-bottom: 15px;
+}
+
+/* Popup Buttons Container */
+.popup-buttons {
+    display: flex;
+    justify-content: center;
+    /* Center buttons horizontally */
+    gap: 15px;
+    /* Add space between buttons */
+    margin-top: 25px;
+    width: 100%;
+    /* Ensure the buttons take up the full width of the parent */
+    text-align: center;
+    /* Ensure content is centered */
+}
+
+.cancel-form-button {
+    background-color: #e58f8f;
+    width: 100%;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 15px;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 4px 0 #d87373;
+    height: 62px;
+    /* 3D effect */
+    transition: all 0.4s ease;
+    font-family: "Playpen Sans", serif;
+    text-decoration: none;
+}
+
+.cancel-form-button:hover {
+    background-color: #ff6363;
+    box-shadow: 0 4px 0 #e58f8f;
+}
+
+.cancel-form-button:active{
+    box-shadow: 0 2px 0 #d87373;
+    /* Push effect when clicked */
+    transform: translateY(3px);
+}
+/*===========================================
+            RESET PASSWORD PAGE
+=============================================*/
+.reset-password-container {
+    position: fixed;
+    margin-top: 50px;
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    max-width: 450px;
+    height: 350px;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    left: 500px;
+    top: 120px;
+}
+
+.success-message a {
+    color: #e58f8f;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.success-message a:hover {
+    color: #ff6363;
+    text-decoration: underline;
+}
+
+
+
